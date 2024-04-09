@@ -7,7 +7,7 @@ const PDFMerger = require('pdf-merger-js');
 // const schedule = require('node-schedule');
 
 // Updated upload destination to use /tmp directory, which is writable in Vercel environment
-const upload = multer({ dest: 'tmp/uploads' });
+const upload = multer({ dest: '/tmp/uploads' });
 const app = express();
 const port = process.env.PORT || 3000;
 

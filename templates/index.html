@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css" />
+    <title>PDF Merger</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <!-- LOGO -->
+        <div class="logo"><strong>PDF</strong>Unity</div>
+        <!-- NAVIGATION MENU -->
+        <ul class="nav-links">
+            <!-- NAVIGATION MENUS -->
+            <div class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/">About</a></li>
+
+                <li class="services">
+                    <a href="/">Services</a>
+                    <!-- DROPDOWN MENU -->
+                    <ul class="dropdown">
+                        <li><a href="/">Dropdown 1 </a></li>
+                        <li><a href="/">Dropdown 2</a></li>
+                        <li><a href="/">Dropdown 2</a></li>
+                        <li><a href="/">Dropdown 3</a></li>
+                        <li><a href="/">Dropdown 4</a></li>
+                    </ul>
+                </li>
+                <li><a href="/">Contact</a></li>
+            </div>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <div class="text-box">
+            <div class="heading">
+                <!-- <img src="/Images/PDF Merger logo.png" alt="merge-pdf-logo"> -->
+                <!-- <img class="pdf-merge-icon" src="https://o.remove.bg/downloads/c7e50158-810a-4abd-b88b-c256faeb5e41/Merge-PDF-Files-into-Single-PDF-removebg-preview.png" alt="merge-pdf-logo"> -->
+
+                <img class="pdf-merge-icon" src="https://scannergo.net/assets/tools/merge-pdf.svg?imwidth=384"
+                    alt="merge-pdf-logo">
+                <h1>PDF Merge</h1>
+            </div>
+            <p class="title">Combine PDF files online easily.</p>
+        </div>
+
+
+        <div class="box" id="dropBox" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)"
+            ondrop="handleDrop(event)">
+            <!-- <button class="choose-btn">Choose Files</button> -->
+            <form id="pdfUploadForm" method="post" action="/merge" enctype="multipart/form-data">
+                <div class="input-file">
+                    <p id="selectedFile" class="selected-file">No file selected</p>
+                    <div class="file-selector">
+                        <label for="formFile" class="choose-btn">Choose Files</label>
+                        <input class="form-control" type="file" name="pdfs" id="formFile"
+                            onchange="showSelectedFileCount()" onchange="checkFile(this)" multiple accept=".pdf">
+                        <span class="refresh-icon"><i class="fa" title="Refresh">&#xf021;</i></span>
+                    </div>
+                    <p class="dropFile">Or drop your files here</p>
+                    <input id="submitBtn" type="submit" class="choose-btn merge-btn" value="Merge Files">
+                </div>
+
+            </form>
+        </div>
+
+
+        <div class="use-method">
+            <img class="pdf-merge-img"
+                src="https://www.adobe.com/dc-shared/assets/images/frictionless/how-to-images/merge-pdf-how-to.svg"
+                alt="PDF Merge Icon">
+
+            <div class="method-text">
+                <h2>How can I combine PDF files for free?</h2>
+                <ul class="use-method-list">
+                    <li class="list-item">Drag and drop or select files to upload from your device.</li>
+                    <li class="list-item">Click on MERGE FILES button</li>
+                    <li class="list-item">Download your newly merged file to your device.</li>
+                    <span class="list-item warning">The merged PDF file destroy after 1 hour from website</span>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="other-tools">
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="/script.js"></script>
+</body>
+
+</html>

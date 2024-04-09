@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+/* UTILITIES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition-duration: 0.4s;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    transition-duration: 0.5s;
+    background-color: rgb(245, 246, 250);
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.menu a {
+    text-decoration: none;
+}
+
+.menu li {
+    list-style: none;
+}
+
+/* NAVBAR STYLING STARTS */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    /* background-color: teal; */
+    background-color: rgb(255 55 91);
+    color: #fff;
+}
+
+.nav-links a {
+    color: #fff;
+}
+
+/* LOGO */
+.logo {
+    font-size: 32px;
+}
+
+/* NAVBAR MENU */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    font-size: 16px;
+}
+
+.menu li:hover {
+    /* background-color: #4c9e9e; */
+    background-color: rgb(255, 98, 127);
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.menu li {
+    padding: 5px 14px;
+}
+
+/* DROPDOWN MENU */
+.services {
+    position: relative;
+}
+
+.dropdown {
+    /* background-color: rgb(1, 139, 139); */
+    background-color: rgb(255 55 91);
+    padding: 1em 0;
+    position: absolute;
+    /*WITH RESPECT TO PARENT*/
+    display: none;
+    border-radius: 8px;
+    top: 35px;
+}
+
+.dropdown li+li {
+    margin-top: 10px;
+}
+
+.dropdown li {
+    padding: 0.5em 1em;
+    width: 8em;
+    text-align: center;
+}
+
+.dropdown li:hover {
+    /* background-color: #4c9e9e; */
+    background-color: rgb(255, 98, 127);
+}
+
+.services:hover .dropdown {
+    display: block;
+}
+
+.container {
+    max-width: 75%;
+    margin: auto auto;
+    /* height: 500px; */
+    /* background-color: rgb(255, 157, 157); */
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+
+}
+
+.text-box {
+    margin: 6vh 0 0 0;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    height: 77px;
+
+}
+
+.heading h1 {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+    color: rgb(48, 48, 48);
+}
+
+.pdf-merge-icon {
+    width: 70px;
+}
+
+.title {
+    color: rgb(114, 114, 115);
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+}
+
+.box {
+    width: 90%;
+    height: 300px;
+    border-radius: 4px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px;
+    /* background-color: rgb(180, 255, 105); */
+    background-color: white;
+    transition-duration: 0.2s;
+    box-shadow: 0 0 32px rgba(0, 40, 75, 0.20);
+    outline: thick solid white;
+    margin: 24px;
+    cursor: pointer;
+    border: 2px dashed rgb(213, 213, 213);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.box:hover {
+    border-color: rgb(177, 177, 177);
+    /* transition-duration: 0.7s; */
+}
+
+
+.dragover {
+    border: 2px dashed #3498db;
+    ;
+}
+
+.input-file {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.file-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* left: 13px; */
+}
+
+.choose-btn {
+    text-transform: uppercase;
+    padding: 14px 50px;
+    border: none;
+    background-color: rgb(0, 104, 223);
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    font-size: 17px;
+    transition-duration: 0.2s;
+    margin: 10px;
+
+}
+
+.choose-btn:active {
+    background-color: rgb(0, 73, 157);
+
+}
+
+
+/* .refresh-icon {
+    width: 42px;
+    height: 46px;
+    justify-content: flex-start;
+} */
+
+.refresh-icon {
+    display: none;
+}
+
+.refresh-icon i {
+    color: #303030;
+    font-size: 33px;
+    opacity: 0.85;
+    margin: 0 0 0 3px;
+    transition: all 0.2s;
+    width: 44px;
+}
+
+
+.refresh-icon i:active {
+    color: #3b3b3b;
+    font-size: 32px;
+}
+
+.dropFile {
+    color: #8b8b8b;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.merge-btn {
+    background-color: rgb(255, 55, 91);
+    font-weight: 600;
+    padding: 17px 72px;
+    display: none;
+}
+
+.merge-btn:active {
+    background-color: rgb(201, 43, 72);
+}
+
+/* .file-info {
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #555;
+    } */
+
+.selected-file {
+    display: block;
+    margin: 10px;
+    font-size: 17px;
+    color: #555;
+}
+
+.form-control {
+    display: none;
+}
+
+
+
+.use-method {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 30px 0 40px 0;
+
+}
+
+.use-method h2 {
+    color: #303030;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.pdf-merge-img {
+    min-width: 300px;
+    width: 350px;
+    margin: 0 50px 0 0;
+
+}
+
+.use-method-list {
+    list-style: none;
+    line-height: 2.5;
+    font-weight: 300;
+    color: #3e3e3e;
+    margin: 10px 0 0 0;
+    counter-reset: item-counter;
+}
+
+.use-method-list li::before {
+    content: counter(item-counter);
+    counter-increment: item-counter;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    margin: 0 13px 0 0;
+    color: white;
+    font-weight: 300;
+    font-size: 15px;
+    background-color: rgb(255, 55, 91);
+}
+
+
+.list-item {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+
+.warning::before {
+    content: "\26A0";
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 27px;
+    height: 27px;
+    border-radius: 50px;
+    margin: 0 13px 0 0;
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    background-color: rgb(255, 91, 5);
+}
+
+.other-tools {
+    width: 100%;
+    height: 500px;
+    background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, rgba(255, 55, 91, 0.3) 0%, rgba(255, 255, 255, 0) 71.88%)
+        /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+        , #FFFFFF;
+
+    /* box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 0px 87px 52px rgba(0, 0, 0, 0.05), 0px 39px 39px rgba(0, 0, 0, 0.09), 0px 10px 21px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1); */
+    margin: 0 0 200px 0;
+}
+
+
+
+
+
+
+@media screen and (max-width: 1100px) {
+    .nav-links {
+        padding: 17px 0 7px 0;
+    }
+
+    .container {
+        max-width: 90%;
+    }
+}

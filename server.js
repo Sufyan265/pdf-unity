@@ -1,17 +1,17 @@
 const express = require('express');
-const fs = require('fs');
+// const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const PDFMerger = require('pdf-merger-js');
-const schedule = require('node-schedule');
+// const schedule = require('node-schedule');
 
 // Updated upload destination to use /tmp directory, which is writable in Vercel environment
-const upload = multer({ dest: 'tmp/uploads' });
+const upload = multer({ dest: '/tmp/uploads' });
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use('/static', express.static(path.join(__dirname, 'tmp/public')));
+app.use('/static', express.static(path.join(__dirname, '/tmp/public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -43,7 +43,7 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
 
     const time = new Date().getTime();
     // Save the merged PDF in the /tmp directory, which is writable
-    const mergedPdfPath = `tmp/public/PDF_${time}.pdf`;
+    const mergedPdfPath = `/tmp/public/PDF_${time}.pdf`;
 
     await merger.save(mergedPdfPath); // Save the merged PDF
 

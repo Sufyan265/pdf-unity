@@ -11,8 +11,8 @@ function showSelectedFileCount() {
 
 let mergeBtn = document.querySelector(".merge-btn")
 
-const refreshIconSpan = document.querySelector(".refresh-icon")
-const fileSelector = document.querySelector(".file-selector")
+const refreshIconSpan = document.querySelector(".refresh-icon");
+const fileSelector = document.querySelector(".file-selector");
 
 
 

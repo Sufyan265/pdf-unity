@@ -43,7 +43,7 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
 
     const time = new Date().getTime();
     // Save the merged PDF in the /tmp directory, which is writable
-    const mergedPdfPath = `tmp/public/PDF_${time}.pdf`;
+    const mergedPdfPath = `/tmp/public/PDF_${time}.pdf`;
 
     await merger.save(mergedPdfPath); // Save the merged PDF
 
@@ -54,8 +54,8 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
     res.json({ url: `/static/PDF_${time}.pdf` });
 
   } catch (error) {
-    console.error('Error in /merge:', error);
-    res.status(500).json({ error: 'Internal server error during hit /merge' });
+    console.error('Error in "/merge":', error);
+    res.status(500).json({ error: 'Internal server error during hit "/merge"', error });
   }
 });
 

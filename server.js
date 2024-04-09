@@ -42,7 +42,7 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res, next) => {
       await merger.add(task);
     }
     const time = new Date().getTime();
-    const publicFolderPath = path.join(__dirname, '/tmp/public');
+    const publicFolderPath = path.join(__dirname, '/public');
     const mergedPdfPath = `${publicFolderPath}/PDF_${time}.pdf`;
 
     await merger.save(mergedPdfPath); // Removed callback to unlink here as it's handled below

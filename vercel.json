@@ -8,8 +8,9 @@
    ],
    "routes": [
       {
-         "handle": "filesystem"
-      },
+         "src": "/merge",
+         "dest": "merge.js"
+       },
       {
          "src": "/(.*)",
          "dest": "server.js"

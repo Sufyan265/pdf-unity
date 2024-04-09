@@ -11,7 +11,7 @@ const upload = multer({ dest: '/tmp/uploads' });
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use('/static', express.static(path.join(__dirname, 'tmp/public')));
+app.use('/static', express.static(path.join(__dirname, '/tmp/public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

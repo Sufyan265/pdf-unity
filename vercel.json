@@ -9,11 +9,11 @@
    "routes": [
      {
        "src": "/merge",
-       "dest": "/server.js"
+       "dest": "server.js"
      },
      {
        "src": "/(.*)",
-       "dest": "/server.js"
+       "dest": "server.js"
      }
    ]
  }

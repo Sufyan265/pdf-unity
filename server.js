@@ -15,7 +15,7 @@ app.use('/static', express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const websitePath = path.join(__dirname, '/templates');
+const websitePath = path.join(__dirname, '/src');
 app.use(express.static(websitePath));
 
 app.get('/', (req, res) => {

@@ -1,14 +1,30 @@
 const express = require('express');
-const multer = require('multer');
+const fs = require('fs');
+const path = require("path");
+const multer = require('multer')
 const bodyParser = require('body-parser');
 const PDFMerger = require('pdf-merger-js');
 
-const upload = multer();
-const app = express();
-const port = process.env.PORT || 3000;
+// const { mergePdf } = require('./merge')
+
+const upload = multer({ dest: 'uploads/' })
+const app = express()
+const port = 3000
+app.use('/static', express.static('public'))
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+
+const wbsitePath = path.join(__dirname, "/templates")
+app.use(express.static(wbsitePath))
+
+app.get('/', (req, res) => {
+  res.send(wbsitePath)
+})
+
+const list = [];
 
 app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
   const merger = new PDFMerger();
@@ -30,6 +46,7 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
   res.send(mergedPdfBuffer);
 });
 
+
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+  console.log(`Example app listening on port http://localhost:${port}`)
+})

@@ -4,19 +4,11 @@
       {
          "src": "server.js",
          "use": "@vercel/node"
-      },
-      {
-         "src": "merge.js",
-         "use": "@vercel/node"
-       }
+      }
    ],
    "routes": [
       {
          "src": "/merge",
-         "dest": "merge.js"
-       },
-      {
-         "src": "/(.*)",
          "dest": "server.js"
       }
    ]

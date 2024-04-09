@@ -55,7 +55,7 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
 
   } catch (error) {
     console.error('Error in /merge:', error);
-    res.status(500).json({ error: 'Internal server error during hit /merge' });
+    res.status(500).json({ error: 'Internal server error during hit /merge' error });
   }
 });
 

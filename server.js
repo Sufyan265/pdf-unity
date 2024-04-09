@@ -43,9 +43,9 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
 
     const time = new Date().getTime();
     // Save the merged PDF in the /tmp directory, which is writable
-    const mergedPdfPath = `/tmp/public/PDF_${time}.pdf`;
+    // const mergedPdfPath = `/tmp/public/PDF_${time}.pdf`;
 
-    await merger.save(mergedPdfPath); // Save the merged PDF
+    // await merger.save(mergedPdfPath); // Save the merged PDF
 
     // Clear the list of processed files
     list.length = 0;

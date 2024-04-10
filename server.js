@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
+const fs = require('fs');
 const bodyParser = require('body-parser');
-const { PDFDocument, PDFPage } = require('pdf-lib');
+const { PDFDocument } = require('pdf-lib');
 
 const upload = multer(); // Remove the destination option, as we won't be saving files locally
 const app = express();
@@ -32,6 +33,11 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
     }
 
     const mergedPdfBytes = await mergedPdf.save();
+    const mergedPdfPath = path.join(__dirname, 'public', `merged.pdf`);
+
+    // Save the merged PDF to the public directory
+    await fs.promises.writeFile(mergedPdfPath, mergedPdfBytes);
+
     const pdfUrl = `/static/merged.pdf`;
 
     res.json({ url: pdfUrl });

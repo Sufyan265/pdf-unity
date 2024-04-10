@@ -57,7 +57,9 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
     // Provide a URL to access the merged PDF file
     const pdfUrl = `/static/PDF_${time}.pdf`;
     console.log('PDF URL:', pdfUrl); // Log PDF URL
-    res.json({ url: pdfUrl });
+    
+    // res.json({ url: pdfUrl });
+    res.redirect(pdfUrl);
 
   } catch (error) {
     console.error('Error in "/merge":', error);

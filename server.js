@@ -1,11 +1,10 @@
-
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const PDFMerger = require('pdf-merger-js');
 
-const upload = multer({ dest: './tmp/uploads' }); // Set the destination to /public/uploads
+const upload = multer({ dest: path.join(__dirname, './tmp/uploads') }); // Set the destination to /tmp/uploads
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -42,7 +41,7 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
 
     const time = new Date().getTime();
     // Save the merged PDF in the /public directory
-    const mergedPdfPath = `./public/PDF_${time}.pdf`;
+    const mergedPdfPath = path.join(__dirname, `./public/PDF_${time}.pdf`);
 
     await merger.save(mergedPdfPath); // Save the merged PDF
     console.log('Merged PDF saved at:', mergedPdfPath); // Log merged PDF path

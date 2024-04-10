@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
-const fs = require('fs');
 const bodyParser = require('body-parser');
 const { PDFDocument } = require('pdf-lib');
 
@@ -9,8 +8,6 @@ const upload = multer(); // Remove the destination option, as we won't be saving
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Serve static files from the /public directory
-app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -33,17 +30,16 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
     }
 
     const mergedPdfBytes = await mergedPdf.save();
-    const mergedPdfPath = path.join(__dirname, 'public', `merged.pdf`);
+    
+    // Set headers to indicate that the response is a PDF file
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=merged.pdf');
 
-    // Save the merged PDF to the public directory
-    await fs.promises.writeFile(mergedPdfPath, mergedPdfBytes);
-
-    const pdfUrl = `/static/merged.pdf`;
-
-    res.json({ url: pdfUrl });
+    // Send the merged PDF content as response
+    res.send(mergedPdfBytes);
   } catch (error) {
     console.error('Error in "/merge":', error);
-    res.status(500).json({ error: 'Internal server error during hit "/merge"', error });
+    res.status(500).json({ error: 'Internal server error during hit "/merge"' });
   }
 });
 

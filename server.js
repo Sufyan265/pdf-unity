@@ -17,14 +17,14 @@ app.get('/', (req, res) => {
 
 app.post('/merge', async (req, res) => {
   try {
-    if (!req.files || Object.keys(req.files).length === 0) {
+    if (!req.files || !req.files.pdfs) {
       return res.status(400).send('No files were uploaded.');
     }
 
     const mergedPdf = await PDFDocument.create();
 
     // Loop through each uploaded file
-    for (const file of Object.values(req.files.pdfs)) {
+    for (const file of Array.isArray(req.files.pdfs) ? req.files.pdfs : [req.files.pdfs]) {
       const pdfBytes = file.data; // Access file data
       const pdfDoc = await PDFDocument.load(pdfBytes);
       const pages = await mergedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());

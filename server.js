@@ -4,7 +4,7 @@ const multer = require('multer');
 const bodyParser = require('body-parser');
 const PDFMerger = require('pdf-merger-js');
 
-const upload = multer({ dest: './public/uploads' }); // Set the destination to /public/uploads
+const upload = multer(); // Remove the destination option, as we won't be saving files locally
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -27,7 +27,8 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
 
     if (req.files) {
       req.files.forEach(file => {
-        list.push(file.path);
+        // Instead of storing the file path, we'll directly use the buffer
+        merger.addBuffer(file.buffer);
       });
     }
 
@@ -35,23 +36,12 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
       return res.status(400).json({ error: 'Please provide at least 2 PDF files to merge.' });
     }
 
-    for (const filePath of list) {
-      await merger.add(filePath);
-    }
-
     const time = new Date().getTime();
-    // Save the merged PDF in the /public directory
-    const mergedPdfPath = `./public/PDF_${time}.pdf`;
-
-    await merger.save(mergedPdfPath); // Save the merged PDF
-    console.log('Merged PDF saved at:', mergedPdfPath); // Log merged PDF path
-
-    // Clear the list of processed files
-    list.length = 0;
+    const mergedPdfBuffer = await merger.saveAsBuffer(); // Save the merged PDF as buffer
 
     // Provide a URL to access the merged PDF file
     const pdfUrl = `/static/PDF_${time}.pdf`;
-    console.log('PDF URL:', pdfUrl); // Log PDF URL
+
     res.json({ url: pdfUrl });
 
   } catch (error) {

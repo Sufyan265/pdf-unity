@@ -4,7 +4,7 @@ const multer = require('multer');
 const bodyParser = require('body-parser');
 const PDFMerger = require('pdf-merger-js');
 
-const upload = multer({ dest: path.join(__dirname, './tmp/uploads') }); // Set the destination to /tmp/uploads
+const upload = multer({ dest: path.join(__dirname, '/tmp/uploads') }); // Set the destination to /tmp/uploads
 const app = express();
 const port = process.env.PORT || 3000;
 

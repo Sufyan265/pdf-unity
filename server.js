@@ -41,8 +41,8 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
     }
 
     const time = new Date().getTime();
-    // Save the merged PDF in the /public directory
-    const mergedPdfPath = path.join(__dirname, `./public/PDF_${time}.pdf`);
+
+    const mergedPdfPath = path.join('/tmp', `PDF_${time}.pdf`);
 
     await merger.save(mergedPdfPath); // Save the merged PDF
     console.log('Merged PDF saved at:', mergedPdfPath); // Log merged PDF path

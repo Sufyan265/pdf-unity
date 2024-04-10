@@ -10,7 +10,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Serve static files from the /public directory
-app.use('/static', express.static(path.join(__dirname, 'public')));
+// app.use('/static', express.static(path.join(__dirname, 'public')));
+app.get('/static/:file', (req, res) => {
+  const filePath = path.join('/tmp', req.params.file);
+  res.sendFile(filePath);
+});
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

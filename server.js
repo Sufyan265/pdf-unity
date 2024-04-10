@@ -33,7 +33,7 @@ app.post('/merge', upload.array('pdfs', 500), async (req, res) => {
     }
 
     if (list.length < 2) {
-      return res.status(400).json({ error: 'Please provide at least 2 PDF files to merge.' });
+      return res.status(400).json({ error: 'Please provide at least 2 PDF files to merge.', error });
     }
 
     for (const filePath of list) {
